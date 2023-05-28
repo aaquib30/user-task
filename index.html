@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>USER LOG IN</title>
+
+    <style>
+        input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+
+        h2 {
+            /* background-color: #A700BB; */
+            /* color: white; */
+            display: inline;
+            padding-top: 25px;
+
+
+        }
+
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+
+        .button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #A700BB;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+
+
+        .button:hover,
+        .button:active,
+        .button:focus {
+            background: #d82bd8;
+        }
+
+        .head {
+            margin-bottom: 25px;
+            font-family: "Roboto", sans-serif;
+
+        }
+
+
+        #page {
+            margin: 10px;
+
+
+
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 2px;
+            font-size: 18px;
+            font-family: "Monospace", Lucida Console;
+            padding: 5px;
+            color: white;
+            background-color: #a700bb;
+            height: 40px;
+        }
+
+        li {
+
+            display: inline;
+            background-color: #a700bb;
+            padding: 6px;
+            border: 1px solid white;
+
+        }
+
+
+        a:link {
+
+            color: white;
+            text-decoration: none;
+
+        }
+
+        a:visited {
+
+            color: white;
+            text-decoration: none;
+
+        }
+
+        a:hover {
+
+            color: black;
+            text-decoration: none;
+
+        }
+
+
+        #form {
+            margin-left: 91%;
+            margin-top: -10px;
+        }
+
+
+        .error{
+            color: red; 
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+
+    <ul>
+        <li><a href="index.html">Registration page</a></li>
+        <li><a href="task.php">Task page</a></li>
+        <li><a href="table.php">user table</a></li>
+        <li><a href="usertable.php">Task details</a></li>
+
+        
+
+
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form">
+        <div class="head">
+            <h2>User registration </h2>
+        </div>
+
+                     <!-- sending form data to user.php  -->
+
+        <form mehthod="GET" action="user.php"  id="userform">
+            <input type="text" name="username" maxlength="100" placeholder="Full Name"><br>
+            <input type="text" name="email" placeholder="Email" id="email" onblur=""><br>
+            <input type="text" name="number" placeholder="Number" id="num" onblur=""
+                maxlength="10"><br>
+            <input class="button" type="submit" value="submit" name="submit" placeholder="Submit"><br>
+        
+
+
+        </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+    crossorigin="anonymous">
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- validate user input using javascript Regex at client side -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#userform").validate({
+        rules : {
+            email: {
+                required: true,
+                email: true
+            },
+        number: {
+                required: true,
+                number: true,
+                minlength: 10
+            }
+        },
+
+        messages : {
+
+        }
+
+
+
+        // email: {
+        //         required: true,
+        //         email: true
+        //     },
+        // number: {
+        //         required: true,
+        //         number: true,
+        //         minlength: 10
+        //     },
+
+
+
+
+    });
+});
+</script>
+
+
+
+<!-- 
+        // validating mail
+
+        // function validate(id) {
+        //     let mail = document.getElementById(id);
+        //     let reg = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+
+        //     if (!reg.test(mail.value)) {
+        //         mail.style.border = "2px solid red"
+        //     //     mail.elements.checked = false;
+        //     //     mail.elements.value = '';
+        //     //    mail.elements.selectedIndex = 0;
+        //         alert("Enter valid email address")
+        //         return false;
+
+
+        //     }
+
+        //     mail.style.border = "2px solid green"
+
+
+
+        // }
+
+        // // validating phone number
+        // function validatenum(id) {
+        //     let number = document.getElementById(id);
+        //     let regn = /^[0-9]{10}$/;
+
+        //     if (!regn.test(number.value)) {
+        //         number.style.border = "2px solid red"
+        //         alert("Enter valid Number")
+        //         return false;
+
+
+        //     }
+
+        //     number.style.border = "2px solid green"
+
+
+
+        // } -->
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
